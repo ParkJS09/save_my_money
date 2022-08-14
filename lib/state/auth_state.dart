@@ -18,7 +18,6 @@ class AuthState extends ChangeNotifier {
 
     //Firebase의 User 상태가 변경됨을 리스너
     FirebaseAuth.instance.userChanges().listen((user) {
-      dev.log('test : $user');
       if (user != null) {
         _loginState = AuthLoginState.Authenticated;
       } else {
