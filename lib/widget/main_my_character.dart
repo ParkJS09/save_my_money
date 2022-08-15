@@ -47,6 +47,7 @@ class MyCharacter extends SpriteAnimationComponent with HasGameRef<MyGame> {
 
   @override
   void update(double dt) {
+    //animation의 update()를 호출하여 애니메이션의 업데이트
     animation?.update(dt);
     if (position.x <= gameRef.size.x * 0.25) {
       onMove(CharacterMove.RIGHT);

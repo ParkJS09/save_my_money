@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:savemymoney/constants.dart';
 import 'package:savemymoney/state/auth_state.dart';
+import 'package:savemymoney/state/my_info_state.dart';
 import 'package:savemymoney/theme.dart';
 import 'screens/home/home_page.dart';
 
@@ -11,6 +12,9 @@ void main() {
       providers: [
         ChangeNotifierProvider<AuthState>(
           create: (context) => AuthState(),
+        ),
+        ChangeNotifierProvider<MyInfoState>(
+          create: (context) => MyInfoState(),
         ),
       ],
       child: const MyApp(),
