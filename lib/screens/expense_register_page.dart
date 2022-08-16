@@ -58,18 +58,18 @@ class _ExpenseRegisterPageState extends State<ExpenseRegisterPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
                           onPressed: () {
-                            if(_titleController.text.isEmpty){
+                            if (_titleController.text.isEmpty) {
                               showSnackBar(context, '제목을 확인해주세요.', () {});
                               return;
                             }
-                            if(_titleController.text.isEmpty){
+                            if (_titleController.text.isEmpty) {
                               showSnackBar(context, '제목을 확인해주세요.', () {});
                               return;
                             }
-                            context.read<MyInfoState>().addDate(_date.toFormat1(), _titleController.text, _priceController.text);
-                            showSnackBar(context, '저장되었습니다.', () {
-                              Navigator.pop(context);
-                            });
+                            context.read<MyInfoState>().addDate(
+                                _date.toFormat1(),
+                                _titleController.text,
+                                _priceController.text);
                           },
                           child: const Text('저장'),
                         ),
@@ -118,10 +118,13 @@ class _ExpenseRegisterPageState extends State<ExpenseRegisterPage> {
                 content: Container(
                   child: Column(
                     children: [
-                      Text('날짜를 클릭하여 변경할 수 있습니다.',style: textTheme().bodyText1,),
+                      Text(
+                        '날짜를 클릭하여 변경할 수 있습니다.',
+                        style: textTheme().bodyText1,
+                      ),
                       TextButton(
-                        onPressed: (){
-                          showDatePickerDialog((newDate){
+                        onPressed: () {
+                          showDatePickerDialog((newDate) {
                             print('newDate : $newDate');
                             setState(() {
                               _date = newDate;
@@ -140,16 +143,20 @@ class _ExpenseRegisterPageState extends State<ExpenseRegisterPage> {
                 subtitle: const Text('제목을 적어주세요'),
                 content: Column(
                   children: [
-                    Text('지출에 대한 간단한 제목을 남겨주세요.', style: textTheme().bodyText1,),
-                    const SizedBox(height: 14,),
+                    Text(
+                      '지출에 대한 간단한 제목을 남겨주세요.',
+                      style: textTheme().bodyText1,
+                    ),
+                    const SizedBox(
+                      height: 14,
+                    ),
                     TextFormField(
-                      controller: _titleController,
-                      keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
-                        hintText: '점심 값, 커피 내기 등등등!',
-                        border: OutlineInputBorder(),
-                      )
-                    )
+                        controller: _titleController,
+                        keyboardType: TextInputType.text,
+                        decoration: const InputDecoration(
+                          hintText: '점심 값, 커피 내기 등등등!',
+                          border: OutlineInputBorder(),
+                        ))
                   ],
                 ),
                 isActive: _currentStep >= 1,
@@ -159,20 +166,25 @@ class _ExpenseRegisterPageState extends State<ExpenseRegisterPage> {
                 subtitle: const Text('지출 금액을 적어주세요.'),
                 content: Column(
                   children: [
-                    Text('지출 금액을 입력해주세요.', style: textTheme().bodyText1,),
-                    const SizedBox(height: 14,),
+                    Text(
+                      '지출 금액을 입력해주세요.',
+                      style: textTheme().bodyText1,
+                    ),
+                    const SizedBox(
+                      height: 14,
+                    ),
                     TextFormField(
-                        controller: _priceController,
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          hintText: '숫자로 입력해주세요.',
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (price) {
-                          return price != null && price.isNotEmpty
-                              ? null
-                              : '숫자로만 입력해주세요';
-                        },
+                      controller: _priceController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        hintText: '숫자로 입력해주세요.',
+                        border: OutlineInputBorder(),
+                      ),
+                      validator: (price) {
+                        return price != null && price.isNotEmpty
+                            ? null
+                            : '숫자로만 입력해주세요';
+                      },
                     )
                   ],
                 ),
@@ -190,8 +202,8 @@ class _ExpenseRegisterPageState extends State<ExpenseRegisterPage> {
     Future<DateTime?> selectedDate = showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(today.year,today.month),
-      lastDate: DateTime(today.year,today.month, today.day),
+      firstDate: DateTime(today.year, today.month),
+      lastDate: DateTime(today.year, today.month, today.day),
       currentDate: DateTime.now(),
     );
 
