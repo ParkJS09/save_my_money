@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:savemymoney/data/mock_data.dart';
+import 'package:savemymoney/models/expense_item.dart';
 
 class ExpenseInfoWidget extends StatefulWidget {
-  late List<TestData> list;
+  late List<Expense> expenselist = [];
 
   ExpenseInfoWidget({
     Key? key,
-    required this.list,
+    required this.expenselist,
   }) : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class _ExpenseInfoWidgetState extends State<ExpenseInfoWidget> {
     return ExpansionPanelList(
       animationDuration: const Duration(milliseconds: 600),
       elevation: 1,
-      children: widget.list.map((item) {
+      children: widget.expenselist.map((item) {
         return ExpansionPanel(
           isExpanded: item.isExpanded,
           headerBuilder: (BuildContext context, bool isExpanded) {
@@ -33,13 +34,13 @@ class _ExpenseInfoWidgetState extends State<ExpenseInfoWidget> {
       }).toList(),
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
-          widget.list[index].isExpanded = !isExpanded;
+          widget.expenselist[index].isExpanded = !isExpanded;
         });
       },
     );
   }
 
-  Widget DetailTile(List<TestItem> item) {
+  Widget DetailTile(List<ExpenseItem> item) {
     return Column(
       children: item.map((detailItem) {
         return Padding(

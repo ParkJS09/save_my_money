@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:savemymoney/constants.dart';
+import 'package:savemymoney/providers/expense_provider.dart';
 import 'package:savemymoney/state/my_info_state.dart';
 import 'package:savemymoney/theme.dart';
 import 'package:savemymoney/uitls/extensions/inputExtensions.dart';
@@ -66,7 +67,7 @@ class _ExpenseRegisterPageState extends State<ExpenseRegisterPage> {
                               showSnackBar(context, '제목을 확인해주세요.', () {});
                               return;
                             }
-                            context.read<MyInfoState>().addDate(
+                            context.read<ExpenseProvider>().addData(
                                 _date.toFormat1(),
                                 _titleController.text,
                                 _priceController.text);

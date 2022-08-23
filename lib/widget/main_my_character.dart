@@ -73,19 +73,12 @@ class MyCharacter extends SpriteAnimationComponent with HasGameRef<MyGame> {
     characterMove = move;
     switch (characterMove) {
       case CharacterMove.LEFT:
-        dev.log('animtaion is left');
         animation = _runLeftAnimation;
-        dev.log(
-            'animtaion is _runLeftAnimation.isFirstFrame ${_runLeftAnimation.isFirstFrame}');
         break;
       case CharacterMove.RIGHT:
-        dev.log('animtaion is right');
         animation = _runRightAnimation;
-        dev.log(
-            'animtaion is _runRightAnimation.onStart ${_runRightAnimation.isFirstFrame}');
         break;
       case CharacterMove.STASH:
-        dev.log('animtaion is ??');
         break;
     }
   }

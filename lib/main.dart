@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:savemymoney/constants.dart';
+import 'package:savemymoney/providers/expense_provider.dart';
 import 'package:savemymoney/state/auth_state.dart';
 import 'package:savemymoney/state/my_info_state.dart';
 import 'package:savemymoney/theme.dart';
@@ -15,6 +16,9 @@ void main() {
         ),
         ChangeNotifierProvider<MyInfoState>(
           create: (context) => MyInfoState(),
+        ),
+        ChangeNotifierProvider<ExpenseProvider>(
+          create: (context) => ExpenseProvider(),
         ),
       ],
       child: const MyApp(),

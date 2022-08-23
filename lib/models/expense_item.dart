@@ -1,8 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class Expense {
+  String title;
+  List<ExpenseItem> list = [];
+  bool isExpanded = false;
+
+  Expense({
+    required this.title
+  });
+}
+
+
+
 class ExpenseItem {
-  int _id = 0;
   String title;
   String price;
-  String date;
+  DateTime date;
+  bool isExpended = false;
 
   ExpenseItem({
     required this.title,
@@ -10,18 +24,12 @@ class ExpenseItem {
     required this.date,
   });
 
-  void setId(int id) {
-    _id = id;
-  }
-
   ExpenseItem.fromJson(Map<String, dynamic> json)
-      : _id = json['id'],
-        title = json['title'],
+      : title = json['title'],
         price = json['price'],
-        date = json['date'];
+        date = json['date'].toDate();
 
   Map<String, dynamic> toJson() => {
-        'id': _id,
         'title': title,
         'price': price,
         'date': date,

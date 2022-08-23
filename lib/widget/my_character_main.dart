@@ -18,8 +18,6 @@ class MyGame extends FlameGame with HasGameRef {
 
   @override
   Future<void> onLoad() async {
-    dev.log('onload');
-
     bgFarmComponent
       ..sprite = await loadSprite('bg_farm.png')
       ..size = Vector2(size[0], size[1])
